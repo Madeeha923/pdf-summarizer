@@ -8,25 +8,25 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_groq import ChatGroq
 
-# ✅ Load .env variables before using them
+# Load .env variables before using them
 load_dotenv()
 groq_api_key = os.getenv("GROQ_API_KEY")
 
-# ✅ Validate key
+# Validate key
 if not groq_api_key:
-    st.error("❌ GROQ_API_KEY is missing. Please check your `.env` file.")
+    st.error("GROQ_API_KEY is missing. Please check your `.env` file.")
     st.stop()
 
-# ✅ Initialize LLM after loading the key
+# Initialize LLM after loading the key
 llm = ChatGroq(
-    api_key=groq_api_key,  # <-- correct parameter name is `api_key`
-    model_name="gemma2-9b-it",  # ✅ Use one of Groq’s valid models
+    api_key=groq_api_key,  
+    model_name="gemma2-9b-it",  
     temperature=0.7
 )
 
-# ✅ Streamlit layout
+# Streamlit layout
 st.set_page_config(page_title="PDF Summarizer", layout="centered")
-st.title("📄 PDF Summarizer using LangChain + Groq")
+st.title("📄 PDF Summarizer using LangChain and Groq")
 
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 
@@ -40,7 +40,7 @@ if uploaded_file:
             raw_text += text
 
     if not raw_text.strip():
-        st.error("❌ No extractable text found in the PDF.")
+        st.error("No extractable text found in the PDF.")
         st.stop()
 
     st.success("✅ Text extracted from PDF")
@@ -61,5 +61,5 @@ if uploaded_file:
     with st.spinner("Summarizing..."):
         summary = chain.invoke({"text": raw_text[:3000]})  # summarizing sample chunk
 
-    st.subheader("📚 Summary")
+    st.subheader(" Summary")
     st.success(summary)
