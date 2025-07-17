@@ -1,6 +1,6 @@
 langchain
-langchain-groq
-groq
+langchain-google-genai
 PyPDF2
 python-dotenv
 streamlit
+dotenv
