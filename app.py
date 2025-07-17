@@ -30,7 +30,7 @@ llm = ChatGoogleGenerativeAI(
 # Streamlit layout
 st.set_page_config(page_title="PDF Summarizer", layout="centered")
 # Updated the title to reflect the change in backend
-st.title("📄 PDF Summarizer using LangChain and Google AI")
+st.title(" PDF Summarizer")
 
 uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
 
